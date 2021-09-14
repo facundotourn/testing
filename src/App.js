@@ -6,14 +6,18 @@ import { useState } from 'react';
 
 function App() {
 
-  const [cantLineas, setcantLineas] = useState(null)
+  const [cantLineasTotales, setcantLineasTotales] = useState(null)
+  const [cantLineasCodigo, setcantLineasCodigo] = useState(null)
 
 const handleSubmit = (e) =>{
   e.preventDefault()
-  const lineas = document.getElementById("code").value.split("\n").length
+  const lineasTotales = document.getElementById("code").value.split("\n").length
+  const lineasCodigo = document.getElementById("code").value.split(";").length
   //console.log(document.getElementById("code").value.split("\n").lenght)
-  setcantLineas(lineas)
-  console.log(lineas)
+  setcantLineasTotales(lineasTotales)
+  console.log(lineasTotales)
+  setcantLineasCodigo(lineasCodigo)
+  console.log(lineasCodigo)
 }
 
   return (
@@ -36,7 +40,7 @@ const handleSubmit = (e) =>{
 
 
         <p className="label"> resultado 1</p>
-          <input value={cantLineas} readOnly={true}/>
+          <input value={cantLineasTotales} readOnly={true}/>
 
 
 
@@ -46,7 +50,7 @@ const handleSubmit = (e) =>{
 
 
         <p className="label"> resultado 2</p>
-        <input readOnly={true}/>
+        <input value={cantLineasCodigo} readOnly={true}/>
 
 
 
