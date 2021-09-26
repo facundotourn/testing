@@ -109,7 +109,7 @@ function App() {
 
 
 
-						<p className="label"> lineas totales</p>
+						{/* <p className="label"> lineas totales</p> */}
 						<input value={cantLineasTotales} readOnly={true} />
 
 
@@ -119,7 +119,7 @@ function App() {
 
 
 
-						<p className="label">Lineas de codigo</p>
+						{/* <p className="label">Lineas de codigo</p> */}
 						<input value={cantLineasTotales - comentariosSimples} readOnly={true} />
 
 
@@ -129,7 +129,7 @@ function App() {
 
 
 
-						<p className="label">Lineas comentadas</p>
+						{/* <p className="label">Lineas comentadas</p> */}
 						<input value={comentariosSimples} readOnly={true} />
 
 
@@ -139,7 +139,7 @@ function App() {
 
 
 
-						<p className="label">Porcentaje de lineas comentadas</p>
+						{/* <p className="label">Porcentaje de lineas comentadas</p> */}
 						<input value={comentariosSimples > 0 && cantLineasTotales > 0 ? comentariosSimples / cantLineasTotales * 100 : 0} readOnly={true} />
 
 
@@ -149,7 +149,7 @@ function App() {
 
 
 
-						<p className="label"> Complejidad ciclomatica</p>
+						{/* <p className="label"> Complejidad ciclomatica</p> */}
 						<input value={complejidadCiclomatica} readOnly={true} />
 
 
@@ -159,7 +159,7 @@ function App() {
 
 
 
-						<p className="label">Halstead Longitud</p>
+						{/* <p className="label">Halstead Longitud</p> */}
 						<input value={longitudHalstead} readOnly={true} />
 
 
@@ -169,7 +169,7 @@ function App() {
 
 
 
-						<p className="label">Halstead Volumen</p>
+						{/* <p className="label">Halstead Volumen</p> */}
 						<input value={volumenHalstead} readOnly={true} />
 
 

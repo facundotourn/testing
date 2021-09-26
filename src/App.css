@@ -33,6 +33,7 @@
   padding-right: 30px;
   padding-bottom: 30px;
   background-color: #4caf4f ;
+  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.473);
 }
 
 .button{
@@ -52,6 +53,18 @@ box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.473);
 
   
 }
+
+input{
+  width: 100%;
+  background-color: #c3ffc5;
+  border: none;
+  border-radius: 4px;
+}
+input:focus{
+  /* background-color: black; */
+  outline: none;
+  /* background-color: rgb(146, 210, 226); */
+}
 .resultado{
   /* display: contents; */
   display: flex;
@@ -61,6 +74,7 @@ box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.473);
   border-radius: 10px;
   height: 30px;
   padding-bottom: 25px;
+  width: 100%;
 
 }
 
