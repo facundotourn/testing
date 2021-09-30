@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { halstead, calcularComplejidadCiclomatica } from "../../util";
 import CodeInput from "../CodeInput";
+import Result from "../Result";
+import Results from "../Results";
 
 import "./index.scss";
 
@@ -10,6 +12,40 @@ export default function TestingForm() {
   const [longitudHalstead, setlongitudHalstead] = useState(0);
   const [volumenHalstead, setvolumenHalstead] = useState(0);
   const [comentariosSimples, setcomentariosSimples] = useState(0);
+
+  const outputs = [
+    {
+      name: "cantidad de lineas",
+      value: cantLineasTotales,
+    },
+    {
+      name: "cantidad de lineas de código",
+      value: cantLineasTotales - comentariosSimples,
+    },
+    {
+      name: "cantidad de lienas comentadas",
+      value: comentariosSimples,
+    },
+    {
+      name: "pocentaje de lienas comentadas",
+      value:
+        comentariosSimples > 0 && cantLineasTotales > 0
+          ? (comentariosSimples / cantLineasTotales) * 100
+          : 0,
+    },
+    {
+      name: "complejidad ciclomatica",
+      value: complejidadCiclomatica,
+    },
+    {
+      name: "longitud de Halstead",
+      value: longitudHalstead,
+    },
+    {
+      name: "volumen de Halstead",
+      value: volumenHalstead,
+    },
+  ];
 
   const [code, setCode] = useState("");
   const handleCodeChange = (e) => {
@@ -54,101 +90,11 @@ export default function TestingForm() {
     <div>
       GRUPO 3
       <CodeInput code={code} onCodeChange={handleCodeChange} />
-      <div className="resul-container">
-        <div className="resultado">
-          <input
-            value={
-              document.getElementById("code") &&
-              document.getElementById("code").value
-                ? cantLineasTotales
-                : null
-            }
-            id="cantLineas"
-            placeholder="cantidad de lienas"
-            readOnly={true}
-          />
-        </div>
-        <div className="resultado">
-          {/* <p className="label">Lineas de codigo</p> */}
-          <input
-            value={
-              document.getElementById("code") &&
-              document.getElementById("code").value
-                ? cantLineasTotales - comentariosSimples
-                : null
-            }
-            placeholder="cantidad de lienas de codigo"
-            readOnly={true}
-          />
-        </div>
-        <div className="resultado">
-          {/* <p className="label">Lineas comentadas</p> */}
-          <input
-            value={
-              document.getElementById("code") &&
-              document.getElementById("code").value
-                ? comentariosSimples
-                : null
-            }
-            placeholder="cantidad de lienas comentadas"
-            readOnly={true}
-          />
-        </div>
-        <div className="resultado">
-          {/* <p className="label">Porcentaje de lineas comentadas</p> */}
-          <input
-            value={
-              document.getElementById("code") &&
-              document.getElementById("code").value
-                ? comentariosSimples > 0 && cantLineasTotales > 0
-                  ? (comentariosSimples / cantLineasTotales) * 100
-                  : 0
-                : null
-            }
-            placeholder="pocentaje de lienas comentadas"
-            readOnly={true}
-          />
-        </div>
-        <div className="resultado">
-          {/* <p className="label"> Complejidad ciclomatica</p> */}
-          <input
-            value={
-              document.getElementById("code") &&
-              document.getElementById("code").value
-                ? complejidadCiclomatica
-                : null
-            }
-            placeholder="complejidad ciclomatica"
-            readOnly={true}
-          />
-        </div>
-        <div className="resultado">
-          {/* <p className="label">Halstead Longitud</p> */}
-          <input
-            value={
-              document.getElementById("code") &&
-              document.getElementById("code").value
-                ? longitudHalstead
-                : null
-            }
-            placeholder="longitud de Halstead"
-            readOnly={true}
-          />
-        </div>
-        <div className="resultado">
-          {/* <p className="label">Halstead Volumen</p> */}
-          <input
-            value={
-              document.getElementById("code") &&
-              document.getElementById("code").value
-                ? volumenHalstead
-                : null
-            }
-            placeholder="volumen de Halstead"
-            readOnly={true}
-          />
-        </div>
-      </div>
+      <Results>
+        {outputs.map((output) => (
+          <Result value={output.value} placeholder={output.name} />
+        ))}
+      </Results>
       <button onClick={handleSubmit} class="button">
         Calcular
       </button>
