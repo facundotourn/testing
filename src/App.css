@@ -7,6 +7,8 @@
 .footer{
   height: 50px;
 }
+
+
 .codigo-container{
   display: flex;
   flex-direction: column;
@@ -14,9 +16,11 @@
    text-align: start; 
    padding-bottom: 60px;
 }
+
+
 .codigo{
   border-radius: 5px;
-  height: 300px;
+  height: 200px;
   resize: none;
 }
 
@@ -25,6 +29,8 @@
   height: 32px;
   width: 124px;
 }
+
+
 .contenedor{
   border-radius: 10px;
   margin: auto;
@@ -34,7 +40,7 @@
   padding-left: 30px;
   padding-right: 30px;
   padding-bottom: 30px;
-  background-color: #4caf4f ;
+  background-color: #4cc8d8 ;
   box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.473);
 }
 
@@ -48,19 +54,17 @@
 
 }
 .button:hover{
-
-
-box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.473);
-/* border: 5px groove #00f700;  */
-
-  
+  box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.473);
+  /* border: 5px groove #00f700;  */
 }
 
 input{
   width: 100%;
-  background-color: #c3ffc5;
+  background-color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
+  padding: 6px;
+  cursor:default;
 }
 input:focus{
   /* background-color: black; */
@@ -88,7 +92,9 @@ input:focus{
   
 }
 
-
+textarea:focus{
+  outline: none;
+}
 
 .App-header {
   background-color: #ffffff;
@@ -98,5 +104,9 @@ input:focus{
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.titulo{
+  text-align: center;
 }
 

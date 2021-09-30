@@ -21,49 +21,45 @@ function App() {
 		"try": 0
 	}
 
-	const halsteadMetodo = (texto)=>
-{
-	//Operadores + - = * ; int double float return
-	let textosSinComentarios = texto.replace(/(\/\*([\s\S]*?)\*\/)|(\/\/(.*)$)/gm, '');
-	let cantidadOperadoresTotales = 0;
-	let cantidadOperandosTotales = 0;
-	let cantidadOperadoresUnicos = 0;
-	let cantidadOperandosUnicos = 0;
-	let operadores = ["+", "-", "/", "*", "int", "double", "float", ";", ":", "public", "static", "void", "&&", "||", "<=", ">=", "<", ">"];
-	//var operadores = document.getElementById("operadores").value.split(',');
-	let operandosUnicos = [];
-	let i;
-	//OPERADORES UNICOS Y TOTALES.
-	for (let i = 0; i < operadores.length; i++)
-	{
-		if(textosSinComentarios.indexOf(operadores[i]) !=-1)
-			cantidadOperadoresUnicos++;
-		cantidadOperadoresTotales += texto.split(operadores[i]).length-1;
-	}
-
-	//OPERADORES TOTALES
-
-	//OPERANDOS UNICOS Y TOTALES.
-	let aAnalizar = textosSinComentarios.split(' ');
-	let hasta = textosSinComentarios.split(' ').length;
-	for (let j = 0; j < hasta; j++)
-	{
-		//Si no es un operador y todavia no esta en el array de operandos unicos.
-		if(operadores.indexOf(aAnalizar[j]) == -1 && operandosUnicos.indexOf(aAnalizar[j]) == -1)
-		{
-			operandosUnicos.push(aAnalizar[j]);
-			cantidadOperandosUnicos++;
+	const halsteadMetodo = (texto) => {
+		//Operadores + - = * ; int double float return
+		let textosSinComentarios = texto.replace(/(\/\*([\s\S]*?)\*\/)|(\/\/(.*)$)/gm, '');
+		let cantidadOperadoresTotales = 0;
+		let cantidadOperandosTotales = 0;
+		let cantidadOperadoresUnicos = 0;
+		let cantidadOperandosUnicos = 0;
+		let operadores = ["+", "-", "/", "*", "int", "double", "float", ";", ":", "public", "static", "void", "&&", "||", "<=", ">=", "<", ">"];
+		//var operadores = document.getElementById("operadores").value.split(',');
+		let operandosUnicos = [];
+		let i;
+		//OPERADORES UNICOS Y TOTALES.
+		for (let i = 0; i < operadores.length; i++) {
+			if (textosSinComentarios.indexOf(operadores[i]) != -1)
+				cantidadOperadoresUnicos++;
+			cantidadOperadoresTotales += texto.split(operadores[i]).length - 1;
 		}
-		//Si no es un operador.
-		if(operadores.indexOf(aAnalizar[j]) == -1)
-			cantidadOperandosTotales++;
+
+		//OPERADORES TOTALES
+
+		//OPERANDOS UNICOS Y TOTALES.
+		let aAnalizar = textosSinComentarios.split(' ');
+		let hasta = textosSinComentarios.split(' ').length;
+		for (let j = 0; j < hasta; j++) {
+			//Si no es un operador y todavia no esta en el array de operandos unicos.
+			if (operadores.indexOf(aAnalizar[j]) == -1 && operandosUnicos.indexOf(aAnalizar[j]) == -1) {
+				operandosUnicos.push(aAnalizar[j]);
+				cantidadOperandosUnicos++;
+			}
+			//Si no es un operador.
+			if (operadores.indexOf(aAnalizar[j]) == -1)
+				cantidadOperandosTotales++;
+		}
+		setlongitudHalstead(parseInt(cantidadOperadoresUnicos * Math.log2(cantidadOperadoresUnicos) + cantidadOperandosUnicos * Math.log2(cantidadOperandosUnicos)));
+		setvolumenHalstead(parseFloat((cantidadOperadoresTotales + cantidadOperandosTotales) * Math.log2(cantidadOperadoresUnicos + cantidadOperandosUnicos)).toFixed(2));
 	}
-	setlongitudHalstead(parseInt(cantidadOperadoresUnicos*Math.log2(cantidadOperadoresUnicos)+cantidadOperandosUnicos*Math.log2(cantidadOperandosUnicos)));
-	setvolumenHalstead(parseFloat((cantidadOperadoresTotales+cantidadOperandosTotales)*Math.log2(cantidadOperadoresUnicos+cantidadOperandosUnicos)).toFixed(2));
-}
 
 	const calcularCOmplejidadCiclomatica = (code) => {
-		let result=0
+		let result = 0
 		const codeSplited = code.split(" ");
 		codeSplited.map((c) => {
 			if (c in condicionales) {
@@ -99,80 +95,80 @@ function App() {
 			<div className="contenedor">
 				<div>
 					<div className="codigo-container">
-						GRUPO 3
-						<textarea id="code" placeholder="codigo a evaluar" className="codigo" />
+						<h3 class="titulo">GRUPO 3</h3>
+						<textarea id="code" placeholder="Código a evaluar" className="codigo" />
 
 					</div>
 
-				<div className="resul-container">
-					<div className="resultado">
+					<div className="resul-container">
+						<div className="resultado">
 
 
 
-						<input value={document.getElementById("code") && document.getElementById("code").value? cantLineasTotales:null} id="cantLineas" placeholder="cantidad de lienas" readOnly={true}/>
+							<input value={document.getElementById("code") && document.getElementById("code").value ? cantLineasTotales : null} id="cantLineas" placeholder="Cantidad de líneas" readOnly={true} />
 
 
-					</div>
-					<div className="resultado">
-
-
-
-						{/* <p className="label">Lineas de codigo</p> */}
-						<input value={document.getElementById("code") && document.getElementById("code").value? cantLineasTotales - comentariosSimples:null}  placeholder="cantidad de lienas de codigo" readOnly={true} />
+						</div>
+						<div className="resultado">
 
 
 
-					</div>
-					<div className="resultado">
+							{/* <p className="label">Lineas de codigo</p> */}
+							<input value={document.getElementById("code") && document.getElementById("code").value ? cantLineasTotales - comentariosSimples : null} placeholder="Cantidad de líneas de codigo" readOnly={true} />
 
 
 
-						{/* <p className="label">Lineas comentadas</p> */}
-						<input value={document.getElementById("code") && document.getElementById("code").value? comentariosSimples:null}  placeholder="cantidad de lienas comentadas" readOnly={true} />
+						</div>
+						<div className="resultado">
 
 
 
-					</div>
-					<div className="resultado">
+							{/* <p className="label">Lineas comentadas</p> */}
+							<input value={document.getElementById("code") && document.getElementById("code").value ? comentariosSimples : null} placeholder="Cantidad de líneas comentadas" readOnly={true} />
 
 
 
-						{/* <p className="label">Porcentaje de lineas comentadas</p> */}
-						<input value={document.getElementById("code") && document.getElementById("code").value?comentariosSimples > 0 && cantLineasTotales > 0 ? comentariosSimples / cantLineasTotales * 100 : 0:null}  placeholder="pocentaje de lienas comentadas" readOnly={true} />
+						</div>
+						<div className="resultado">
 
 
 
-					</div>
-					<div className="resultado">
+							{/* <p className="label">Porcentaje de lineas comentadas</p> */}
+							<input value={document.getElementById("code") && document.getElementById("code").value ? comentariosSimples > 0 && cantLineasTotales > 0 ? comentariosSimples / cantLineasTotales * 100 : 0 : null} placeholder="Porcentaje de líneas comentadas" readOnly={true} />
 
 
 
-						{/* <p className="label"> Complejidad ciclomatica</p> */}
-						<input value={document.getElementById("code") && document.getElementById("code").value? complejidadCiclomatica:null}  placeholder="complejidad ciclomatica" readOnly={true} />
+						</div>
+						<div className="resultado">
 
 
 
-					</div>
-					<div className="resultado">
+							{/* <p className="label"> Complejidad ciclomatica</p> */}
+							<input value={document.getElementById("code") && document.getElementById("code").value ? complejidadCiclomatica : null} placeholder="Complejidad ciclomatica" readOnly={true} />
 
 
 
-						{/* <p className="label">Halstead Longitud</p> */}
-						<input value={document.getElementById("code") && document.getElementById("code").value? longitudHalstead:null}  placeholder="longitud de Halstead" readOnly={true} />
+						</div>
+						<div className="resultado">
 
 
 
-					</div>
-					<div className="resultado">
+							{/* <p className="label">Halstead Longitud</p> */}
+							<input value={document.getElementById("code") && document.getElementById("code").value ? longitudHalstead : null} placeholder="Longitud de Halstead" readOnly={true} />
 
 
 
-						{/* <p className="label">Halstead Volumen</p> */}
-						<input value={document.getElementById("code") && document.getElementById("code").value?volumenHalstead:null}  placeholder="volumen de Halstead" readOnly={true} />
+						</div>
+						<div className="resultado">
 
 
 
-					</div>
+							{/* <p className="label">Halstead Volumen</p> */}
+							<input value={document.getElementById("code") && document.getElementById("code").value ? volumenHalstead : null} placeholder="Volumen de Halstead" readOnly={true} />
+
+
+
+						</div>
 
 
 					</div>
