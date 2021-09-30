@@ -16,26 +16,26 @@ export default function TestingForm() {
 
   const outputs = [
     {
-      name: "cantidad de lineas",
+      name: "cantidad de líneas",
       value: cantLineasTotales,
     },
     {
-      name: "cantidad de lineas de código",
+      name: "cantidad de líneas de código",
       value: cantLineasTotales - comentariosSimples,
     },
     {
-      name: "cantidad de lienas comentadas",
+      name: "cantidad de líneas comentadas",
       value: comentariosSimples,
     },
     {
-      name: "pocentaje de lienas comentadas",
+      name: "pocentaje de líneas comentadas",
       value:
         comentariosSimples > 0 && cantLineasTotales > 0
           ? (comentariosSimples / cantLineasTotales) * 100
           : 0,
     },
     {
-      name: "complejidad ciclomatica",
+      name: "complejidad ciclomática",
       value: complejidadCiclomatica,
     },
     {
