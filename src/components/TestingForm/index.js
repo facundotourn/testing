@@ -3,6 +3,7 @@ import { halstead, calcularComplejidadCiclomatica } from "../../util";
 import CodeInput from "../CodeInput";
 import Result from "../Result";
 import Results from "../Results";
+import SubmitButton from "../SubmitButton";
 
 import "./index.scss";
 
@@ -95,11 +96,9 @@ export default function TestingForm() {
           <Result {...output} />
         ))}
       </Results>
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <button onClick={handleSubmit} class="button">
-          Calcular
-        </button>
-      </div>
+      <SubmitButton style={{ marginTop: "20px" }} onClick={handleSubmit}>
+        Calcular
+      </SubmitButton>
     </div>
   );
 }
