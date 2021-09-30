@@ -92,12 +92,14 @@ export default function TestingForm() {
       <CodeInput code={code} onCodeChange={handleCodeChange} />
       <Results>
         {outputs.map((output) => (
-          <Result value={output.value} placeholder={output.name} />
+          <Result {...output} />
         ))}
       </Results>
-      <button onClick={handleSubmit} class="button">
-        Calcular
-      </button>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <button onClick={handleSubmit} class="button">
+          Calcular
+        </button>
+      </div>
     </div>
   );
 }

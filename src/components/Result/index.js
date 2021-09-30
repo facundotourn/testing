@@ -2,7 +2,7 @@ import React from "react";
 
 import "./index.scss";
 
-export default function Result({ value, placeholder }) {
+export default function Result({ value, name }) {
   return (
     <div className="resultado">
       <input
@@ -12,7 +12,7 @@ export default function Result({ value, placeholder }) {
             ? value
             : null
         }
-        placeholder={placeholder}
+        placeholder={name}
         readOnly={true}
       />
     </div>

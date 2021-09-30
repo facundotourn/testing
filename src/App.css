@@ -1,5 +1,4 @@
 .App {
-  text-align: center;
   background-color: rgb(250, 250, 250);
   height: 100vh;
 }
@@ -42,6 +41,8 @@ input {
   border-radius: 6px;
   padding: 6px;
   cursor: default;
+  font-size: 12pt;
+  height: 30px;
 }
 input:focus {
   /* background-color: black; */
