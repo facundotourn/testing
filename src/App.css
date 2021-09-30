@@ -1,31 +1,31 @@
 .App {
   text-align: center;
   background-color: rgb(250, 250, 250);
-  height: 100vh
+  height: 100vh;
 }
 
-.footer{
+.footer {
   height: 50px;
 }
-.codigo-container{
+.codigo-container {
   display: flex;
   flex-direction: column;
 
-   text-align: start; 
-   padding-bottom: 60px;
+  text-align: start;
+  padding-bottom: 60px;
 }
-.codigo{
+.codigo {
   border-radius: 5px;
   height: 300px;
   resize: none;
 }
 
-.unlam-logo{
+.unlam-logo {
   padding-left: 10px;
   height: 32px;
   width: 124px;
 }
-.contenedor{
+.contenedor {
   border-radius: 10px;
   margin: auto;
   width: 800px;
@@ -34,40 +34,35 @@
   padding-left: 30px;
   padding-right: 30px;
   padding-bottom: 30px;
-  background-color: #4caf4f ;
+  background-color: #4caf4f;
   box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.473);
 }
 
-.button{
+.button {
   width: 150px;
   height: 40px;
   border-radius: 20px;
   border: none;
-  background-color: #2196F3;
+  background-color: #2196f3;
   color: white;
-
 }
-.button:hover{
-
-
-box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.473);
-/* border: 5px groove #00f700;  */
-
-  
+.button:hover {
+  box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.473);
+  /* border: 5px groove #00f700;  */
 }
 
-input{
+input {
   width: 100%;
   background-color: #c3ffc5;
   border: none;
   border-radius: 4px;
 }
-input:focus{
+input:focus {
   /* background-color: black; */
   outline: none;
   /* background-color: rgb(146, 210, 226); */
 }
-.resultado{
+.resultado {
   /* display: contents; */
   display: flex;
   flex-direction: row;
@@ -77,26 +72,11 @@ input:focus{
   height: 30px;
   padding-bottom: 25px;
   width: 100%;
-
 }
 
-.label{
+.label {
   /* text-align: center; */
   position: relative;
   top: -20px;
   padding-right: 50px;
-  
 }
-
-
-
-.App-header {
-  background-color: #ffffff;
-   min-height: 50px; 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
