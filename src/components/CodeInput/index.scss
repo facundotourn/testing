@@ -1,0 +1,13 @@
+.codigo-container {
+  display: flex;
+  flex-direction: column;
+
+  text-align: start;
+  padding-bottom: 60px;
+}
+
+.codigo {
+  border-radius: 5px;
+  height: 300px;
+  resize: none;
+}

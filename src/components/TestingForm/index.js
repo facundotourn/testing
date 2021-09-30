@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { halstead, calcularComplejidadCiclomatica } from "../../util";
+import CodeInput from "../CodeInput";
 
 import "./index.scss";
 
@@ -52,15 +53,7 @@ export default function TestingForm() {
   return (
     <div>
       GRUPO 3
-      <div className="codigo-container">
-        <textarea
-          id="code"
-          placeholder="codigo a evaluar"
-          className="codigo"
-          value={code}
-          onChange={handleCodeChange}
-        />
-      </div>
+      <CodeInput code={code} onCodeChange={handleCodeChange} />
       <div className="resul-container">
         <div className="resultado">
           <input
