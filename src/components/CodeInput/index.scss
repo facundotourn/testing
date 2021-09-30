@@ -8,5 +8,9 @@
 .codigo {
   border-radius: 5px;
   height: 300px;
-  resize: none;
+  resize: vertical;
+  max-height: 50vh;
+
+  border: none;
+  outline: none;
 }
