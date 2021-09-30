@@ -7,24 +7,6 @@
 .footer {
   height: 50px;
 }
-.codigo-container {
-  display: flex;
-  flex-direction: column;
-
-  text-align: start;
-  padding-bottom: 60px;
-}
-.codigo {
-  border-radius: 5px;
-  height: 300px;
-  resize: none;
-}
-
-.unlam-logo {
-  padding-left: 10px;
-  height: 32px;
-  width: 124px;
-}
 .contenedor {
   border-radius: 10px;
   margin: auto;
@@ -45,9 +27,11 @@
   border: none;
   background-color: #2196f3;
   color: white;
+  transition: 150ms ease-in-out;
 }
 .button:hover {
   box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.473);
+  transition: 150ms ease-in-out;
   /* border: 5px groove #00f700;  */
 }
 
@@ -61,17 +45,6 @@ input:focus {
   /* background-color: black; */
   outline: none;
   /* background-color: rgb(146, 210, 226); */
-}
-.resultado {
-  /* display: contents; */
-  display: flex;
-  flex-direction: row;
-  font-size: 20px;
-  width: 400px;
-  border-radius: 10px;
-  height: 30px;
-  padding-bottom: 25px;
-  width: 100%;
 }
 
 .label {

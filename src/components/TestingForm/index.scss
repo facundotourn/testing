@@ -1,0 +1,25 @@
+.codigo-container {
+  display: flex;
+  flex-direction: column;
+
+  text-align: start;
+  padding-bottom: 60px;
+}
+
+.codigo {
+  border-radius: 5px;
+  height: 300px;
+  resize: none;
+}
+
+.resultado {
+  /* display: contents; */
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  width: 400px;
+  border-radius: 10px;
+  height: 30px;
+  padding-bottom: 25px;
+  width: 100%;
+}

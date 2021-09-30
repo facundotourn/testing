@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { OPERADORES_JAVA, CONDICIONALES_JAVA } from "../../constants";
+import { halstead, calcularComplejidadCiclomatica } from "../../util";
+
+import "./index.scss";
 
 export default function TestingForm() {
   const [cantLineasTotales, setcantLineasTotales] = useState(0);
@@ -8,45 +10,17 @@ export default function TestingForm() {
   const [volumenHalstead, setvolumenHalstead] = useState(0);
   const [comentariosSimples, setcomentariosSimples] = useState(0);
 
-  const halsteadMetodo = (texto) => {
-    //Operadores + - = * ; int double float return
-    let textosSinComentarios = texto.replace(
-      /(\/\*([\s\S]*?)\*\/)|(\/\/(.*)$)/gm,
-      ""
-    );
-    let cantidadOperadoresTotales = 0;
-    let cantidadOperandosTotales = 0;
-    let cantidadOperadoresUnicos = 0;
-    let cantidadOperandosUnicos = 0;
+  const [code, setCode] = useState("");
+  const handleCodeChange = (e) => {
+    setCode(e.target.value);
+  };
 
-    //var operadores = document.getElementById("operadores").value.split(',');
-    let operandosUnicos = [];
-
-    //OPERADORES UNICOS Y TOTALES.
-    for (let i = 0; i < OPERADORES_JAVA.length; i++) {
-      if (textosSinComentarios.indexOf(OPERADORES_JAVA[i]) !== -1)
-        cantidadOperadoresUnicos++;
-      cantidadOperadoresTotales += texto.split(OPERADORES_JAVA[i]).length - 1;
-    }
-
-    //OPERADORES TOTALES
-
-    //OPERANDOS UNICOS Y TOTALES.
-    let aAnalizar = textosSinComentarios.split(" ");
-    let hasta = textosSinComentarios.split(" ").length;
-    for (let j = 0; j < hasta; j++) {
-      //Si no es un operador y todavia no esta en el array de operandos unicos.
-      if (
-        OPERADORES_JAVA.indexOf(aAnalizar[j]) === -1 &&
-        operandosUnicos.indexOf(aAnalizar[j]) === -1
-      ) {
-        operandosUnicos.push(aAnalizar[j]);
-        cantidadOperandosUnicos++;
-      }
-      //Si no es un operador.
-      if (OPERADORES_JAVA.indexOf(aAnalizar[j]) === -1)
-        cantidadOperandosTotales++;
-    }
+  const handleHalsteadResult = (
+    cantidadOperadoresUnicos,
+    cantidadOperandosUnicos,
+    cantidadOperadoresTotales,
+    cantidadOperandosTotales
+  ) => {
     setlongitudHalstead(
       parseInt(
         cantidadOperadoresUnicos * Math.log2(cantidadOperadoresUnicos) +
@@ -61,40 +35,32 @@ export default function TestingForm() {
     );
   };
 
-  const calcularCOmplejidadCiclomatica = (code) => {
-    let result = 0;
-    const codeSplited = code.split(" ");
-    codeSplited.map((c) => {
-      if (c in CONDICIONALES_JAVA) {
-        ++CONDICIONALES_JAVA[c];
-      }
-    });
-
-    Object.values(CONDICIONALES_JAVA).map((e) => {
-      result = result + e;
-    });
-    console.log(result);
+  const handleComplejidadCiclomaticaResult = (result) => {
     setcomplejidadCiclomatica(result + 1);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const code = document.getElementById("code").value;
-    console.log(code);
-    setcantLineasTotales(code.split("\n").length);
 
-    calcularCOmplejidadCiclomatica(code);
+    setcantLineasTotales(code.split("\n").length);
     setcomentariosSimples(code.split("//").length - 1);
-    halsteadMetodo(code);
+
+    calcularComplejidadCiclomatica(code, handleComplejidadCiclomaticaResult);
+    halstead(code, handleHalsteadResult);
   };
 
   return (
     <div>
+      GRUPO 3
       <div className="codigo-container">
-        GRUPO 3
-        <textarea id="code" placeholder="codigo a evaluar" className="codigo" />
+        <textarea
+          id="code"
+          placeholder="codigo a evaluar"
+          className="codigo"
+          value={code}
+          onChange={handleCodeChange}
+        />
       </div>
-
       <div className="resul-container">
         <div className="resultado">
           <input
@@ -190,7 +156,6 @@ export default function TestingForm() {
           />
         </div>
       </div>
-
       <button onClick={handleSubmit} class="button">
         Calcular
       </button>
