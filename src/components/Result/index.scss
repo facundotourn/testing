@@ -1,9 +1,15 @@
-.resultado {
+.result {
   /* display: contents; */
   display: flex;
-  flex-direction: row;
-  font-size: 20px;
-  width: 400px;
+  flex-direction: column;
   margin-bottom: 15px;
-  width: 100%;
+
+  background-color: #fefefe;
+  border-radius: 4px;
+  padding: 20px;
+}
+
+.result-value-container {
+  font-size: 120px;
+  color: #222;
 }

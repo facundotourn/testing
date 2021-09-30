@@ -4,8 +4,10 @@ import "./index.scss";
 
 export default function Result({ value, name }) {
   return (
-    <div className="resultado">
-      <input
+    <div className="result">
+      <div className="result-value-container">{value}</div>
+      <div className="result-description-container">{name}</div>
+      {/* <input
         value={
           document.getElementById("code") &&
           document.getElementById("code").value
@@ -14,7 +16,7 @@ export default function Result({ value, name }) {
         }
         placeholder={name}
         readOnly={true}
-      />
+      /> */}
     </div>
   );
 }
