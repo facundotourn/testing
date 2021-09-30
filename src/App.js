@@ -109,9 +109,7 @@ function App() {
 
 
 
-						{/* <p className="label"> lineas totales</p> */}
-						<input value={cantLineasTotales} readOnly={true} />
-
+						<input value={document.getElementById("code") && document.getElementById("code").value? cantLineasTotales:null} id="cantLineas" placeholder="cantidad de lienas" readOnly={true}/>
 
 
 					</div>
@@ -120,7 +118,7 @@ function App() {
 
 
 						{/* <p className="label">Lineas de codigo</p> */}
-						<input value={cantLineasTotales - comentariosSimples} readOnly={true} />
+						<input value={document.getElementById("code") && document.getElementById("code").value? cantLineasTotales - comentariosSimples:null}  placeholder="cantidad de lienas de codigo" readOnly={true} />
 
 
 
@@ -130,7 +128,7 @@ function App() {
 
 
 						{/* <p className="label">Lineas comentadas</p> */}
-						<input value={comentariosSimples} readOnly={true} />
+						<input value={document.getElementById("code") && document.getElementById("code").value? comentariosSimples:null}  placeholder="cantidad de lienas comentadas" readOnly={true} />
 
 
 
@@ -140,7 +138,7 @@ function App() {
 
 
 						{/* <p className="label">Porcentaje de lineas comentadas</p> */}
-						<input value={comentariosSimples > 0 && cantLineasTotales > 0 ? comentariosSimples / cantLineasTotales * 100 : 0} readOnly={true} />
+						<input value={document.getElementById("code") && document.getElementById("code").value?comentariosSimples > 0 && cantLineasTotales > 0 ? comentariosSimples / cantLineasTotales * 100 : 0:null}  placeholder="pocentaje de lienas comentadas" readOnly={true} />
 
 
 
@@ -150,7 +148,7 @@ function App() {
 
 
 						{/* <p className="label"> Complejidad ciclomatica</p> */}
-						<input value={complejidadCiclomatica} readOnly={true} />
+						<input value={document.getElementById("code") && document.getElementById("code").value? complejidadCiclomatica:null}  placeholder="complejidad ciclomatica" readOnly={true} />
 
 
 
@@ -160,7 +158,7 @@ function App() {
 
 
 						{/* <p className="label">Halstead Longitud</p> */}
-						<input value={longitudHalstead} readOnly={true} />
+						<input value={document.getElementById("code") && document.getElementById("code").value? longitudHalstead:null}  placeholder="longitud de Halstead" readOnly={true} />
 
 
 
@@ -170,7 +168,7 @@ function App() {
 
 
 						{/* <p className="label">Halstead Volumen</p> */}
-						<input value={volumenHalstead} readOnly={true} />
+						<input value={document.getElementById("code") && document.getElementById("code").value?volumenHalstead:null}  placeholder="volumen de Halstead" readOnly={true} />
 
 
 
@@ -182,6 +180,7 @@ function App() {
 					<button onClick={handleSubmit} class="button">Calcular</button>
 				</div>
 			</div>
+			<div className="footer"></div>
 		</div>
 	);
 }

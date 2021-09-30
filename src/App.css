@@ -4,7 +4,9 @@
   height: 100vh
 }
 
-
+.footer{
+  height: 50px;
+}
 .codigo-container{
   display: flex;
   flex-direction: column;
@@ -14,7 +16,7 @@
 }
 .codigo{
   border-radius: 5px;
-  height: 500px;
+  height: 300px;
   resize: none;
 }
 
