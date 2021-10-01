@@ -1,1 +1,11 @@
+.div-hide {
+  transform: scaleY(0);
+  transition: transform 400ms ease 0ms, height 400ms ease 0ms;
+  height: 0px;
+}
 
+.div-show {
+  transform: scaleY(1);
+  transition: transform 400ms ease 0ms, height 400ms ease 0ms;
+  height: 100%;
+}

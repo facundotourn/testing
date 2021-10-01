@@ -8,12 +8,20 @@ import Title from "../Title";
 
 import "./index.scss";
 
+const FORM_STATES = {
+  WAITING_INPUT: 1,
+  INPUT_LOADED: 2,
+  SHOW_RESULTS: 3,
+};
+
 export default function TestingForm() {
   const [cantLineasTotales, setcantLineasTotales] = useState(0);
   const [complejidadCiclomatica, setcomplejidadCiclomatica] = useState(0);
   const [longitudHalstead, setlongitudHalstead] = useState(0);
   const [volumenHalstead, setvolumenHalstead] = useState(0);
   const [comentariosSimples, setcomentariosSimples] = useState(0);
+
+  const [currentState, setCurrentState] = useState(FORM_STATES.WAITING_INPUT);
 
   const outputs = [
     {
@@ -29,7 +37,7 @@ export default function TestingForm() {
       value: comentariosSimples,
     },
     {
-      name: "pocentaje de líneas comentadas",
+      name: "porcentaje de líneas comentadas",
       value:
         comentariosSimples > 0 && cantLineasTotales > 0
           ? (comentariosSimples / cantLineasTotales) * 100
@@ -52,6 +60,9 @@ export default function TestingForm() {
   const [code, setCode] = useState("");
   const handleCodeChange = (e) => {
     setCode(e.target.value);
+
+    if (e.target.value.length) setCurrentState(FORM_STATES.INPUT_LOADED);
+    else setCurrentState(FORM_STATES.WAITING_INPUT);
   };
 
   const handleHalsteadResult = (
@@ -61,16 +72,18 @@ export default function TestingForm() {
     cantidadOperandosTotales
   ) => {
     setlongitudHalstead(
-      parseInt(
-        cantidadOperadoresUnicos * Math.log2(cantidadOperadoresUnicos) +
-          cantidadOperandosUnicos * Math.log2(cantidadOperandosUnicos)
-      )
+      cantidadOperadoresUnicos <= 0 || cantidadOperandosUnicos <= 0
+        ? "-"
+        : parseInt(
+            cantidadOperadoresUnicos * Math.log2(cantidadOperadoresUnicos) +
+              cantidadOperandosUnicos * Math.log2(cantidadOperandosUnicos)
+          )
     );
     setvolumenHalstead(
-      parseFloat(
-        (cantidadOperadoresTotales + cantidadOperandosTotales) *
-          Math.log2(cantidadOperadoresUnicos + cantidadOperandosUnicos)
-      ).toFixed(2)
+      cantidadOperadoresUnicos + cantidadOperandosUnicos > 0
+        ? "-"
+        : (cantidadOperadoresTotales + cantidadOperandosTotales) *
+            Math.log2(cantidadOperadoresUnicos + cantidadOperandosUnicos)
     );
   };
 
@@ -86,20 +99,29 @@ export default function TestingForm() {
 
     calcularComplejidadCiclomatica(code, handleComplejidadCiclomaticaResult);
     halstead(code, handleHalsteadResult);
+
+    setCurrentState(FORM_STATES.SHOW_RESULTS);
   };
 
   return (
-    <div>
+    <>
       <Title>Herramienta de testing</Title>
+
       <CodeInput code={code} onCodeChange={handleCodeChange} />
-      <Results>
+      <Results
+        className={
+          currentState === FORM_STATES.SHOW_RESULTS ? "div-show" : "div-hide"
+        }
+      >
         {outputs.map((output) => (
-          <Result {...output} />
+          <Result key={output.name} {...output} />
         ))}
       </Results>
-      <SubmitButton style={{ marginTop: "20px" }} onClick={handleSubmit}>
-        Calcular
-      </SubmitButton>
-    </div>
+      {currentState === FORM_STATES.INPUT_LOADED && (
+        <SubmitButton style={{ marginTop: "20px" }} onClick={handleSubmit}>
+          Calcular
+        </SubmitButton>
+      )}
+    </>
   );
 }

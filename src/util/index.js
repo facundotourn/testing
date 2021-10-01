@@ -40,6 +40,13 @@ export const halstead = (texto, callback) => {
       cantidadOperandosTotales++;
   }
 
+  console.log({
+    cantidadOperadoresUnicos,
+    cantidadOperandosUnicos,
+    cantidadOperadoresTotales,
+    cantidadOperandosTotales,
+  });
+
   callback(
     cantidadOperadoresUnicos,
     cantidadOperandosUnicos,
