@@ -41,7 +41,7 @@ export default function TestingForm() {
       name: "porcentaje de líneas comentadas",
       value:
         comentariosSimples > 0 && cantLineasTotales > 0
-          ? (comentariosSimples / cantLineasTotales) * 100
+          ? parseFloat(comentariosSimples / cantLineasTotales).toFixed(3) * 100
           : 0,
     },
     {
