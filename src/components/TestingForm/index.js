@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { CODE_EXAMPLE } from "../../constants";
 import { halstead, calcularComplejidadCiclomatica } from "../../util";
 import CodeInput from "../CodeInput";
 import Result from "../Result";
@@ -21,7 +22,7 @@ export default function TestingForm() {
   const [volumenHalstead, setvolumenHalstead] = useState(0);
   const [comentariosSimples, setcomentariosSimples] = useState(0);
 
-  const [currentState, setCurrentState] = useState(FORM_STATES.WAITING_INPUT);
+  const [currentState, setCurrentState] = useState(FORM_STATES.INPUT_LOADED);
 
   const outputs = [
     {
@@ -57,7 +58,7 @@ export default function TestingForm() {
     },
   ];
 
-  const [code, setCode] = useState("");
+  const [code, setCode] = useState(CODE_EXAMPLE);
   const handleCodeChange = (e) => {
     setCode(e.target.value);
 
