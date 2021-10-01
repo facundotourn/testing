@@ -1,22 +1,14 @@
-.App {
-  background-color: rgb(250, 250, 250);
-  height: 100vh;
-}
-
 .footer {
   height: 50px;
 }
 .contenedor {
-  border-radius: 10px;
-  margin: auto;
-  width: 800px;
-  margin-top: 10px;
-  padding-top: 10px;
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-bottom: 30px;
-  background-color: #4cc8d8;
-  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.473);
+  border-radius: 6px;
+  max-width: 800px;
+  padding: 20px;
+  margin: 20px auto;
+  margin-top: 20px;
+  background-color: rgba(4, 124, 204, 0.2);
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 input {

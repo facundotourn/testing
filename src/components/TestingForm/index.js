@@ -4,6 +4,7 @@ import CodeInput from "../CodeInput";
 import Result from "../Result";
 import Results from "../Results";
 import SubmitButton from "../SubmitButton";
+import Title from "../Title";
 
 import "./index.scss";
 
@@ -89,7 +90,7 @@ export default function TestingForm() {
 
   return (
     <div>
-      GRUPO 3
+      <Title>Herramienta de testing</Title>
       <CodeInput code={code} onCodeChange={handleCodeChange} />
       <Results>
         {outputs.map((output) => (

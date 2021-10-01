@@ -6,12 +6,12 @@
   background-color: #fefefe;
   border-radius: 4px;
   padding: 20px;
-  transition: 200ms ease-in-out;
+  transition: 400ms ease-in-out;
 
   .result-value-container {
     font-size: 48px;
     font-family: "Fira Sans";
-    color: #222;
+    color: #047ccc;
   }
 
   .result-description-container {
@@ -20,8 +20,8 @@
   }
 
   &:hover {
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    transition: 300ms ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: 400ms ease-in-out;
     cursor: default;
   }
 }

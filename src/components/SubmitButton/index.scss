@@ -1,14 +1,20 @@
 .submit-button {
-  width: 150px;
-  height: 40px;
-  border-radius: 20px;
+  padding: 15px 50px;
+  border-radius: 40px;
   border: none;
-  background-color: #2196f3;
+  background-color: #047ccc;
   color: white;
-  transition: 150ms ease-in-out;
+  transition: 250ms ease-in-out;
+
+  text-transform: uppercase;
+  font-size: 14pt;
+  font-weight: 300;
+  letter-spacing: 2px;
+  font-family: "Fira Sans";
+  cursor: pointer;
 }
 
 .submit-button:hover {
   box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.473);
-  transition: 150ms ease-in-out;
+  transition: 250ms ease-in-out;
 }
