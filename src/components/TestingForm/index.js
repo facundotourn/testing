@@ -81,10 +81,12 @@ export default function TestingForm() {
           )
     );
     setvolumenHalstead(
-      cantidadOperadoresUnicos + cantidadOperandosUnicos > 0
+      cantidadOperadoresUnicos + cantidadOperandosUnicos <= 0
         ? "-"
-        : (cantidadOperadoresTotales + cantidadOperandosTotales) *
-            Math.log2(cantidadOperadoresUnicos + cantidadOperandosUnicos)
+        : parseFloat(
+            (cantidadOperadoresTotales + cantidadOperandosTotales) *
+              Math.log2(cantidadOperadoresUnicos + cantidadOperandosUnicos)
+          ).toFixed(1)
     );
   };
 
